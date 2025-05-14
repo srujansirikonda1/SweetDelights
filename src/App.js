@@ -8,17 +8,16 @@ import './App.css';
 
 function App() {
   const products = [
-    { id: 1, title: 'Baklava', price: 7.99, image: '/Assets/image-baklava-desktop.png' },
-    { id: 2, title: 'Brownie', price: 8.99, image: '/Assets/image-brownie-desktop.png' },
-    { id: 3, title: 'Cake', price: 12.99, image: '/Assets/image-cake-desktop.png' },
-    { id: 4, title: 'Crème Brûlée', price: 14.99, image: '/Assets/image-creme-brulee-desktop.png' },
-    { id: 5, title: 'Macaron', price: 9.99, image: '/Assets/image-macaron-desktop.png' },
-    { id: 6, title: 'Meringue', price: 7.99, image: '/Assets/image-meringue-desktop.png' },
-    { id: 7, title: 'Panna Cotta', price: 13.99, image: '/Assets/image-panna-cotta-desktop.png' },
-    { id: 8, title: 'Tiramisu', price: 14.99, image: '/Assets/image-tiramisu-desktop.png' },
-    { id: 9, title: 'Waffle', price: 11.99, image: '/Assets/image-waffle-desktop.png' },
+    { id: 1, title: 'Baklava', price: 7.99, image: `${process.env.PUBLIC_URL}/Assets/image-baklava-desktop.png` },
+    { id: 2, title: 'Brownie', price: 8.99, image: `${process.env.PUBLIC_URL}/Assets/image-brownie-desktop.png` },
+    { id: 3, title: 'Cake', price: 12.99, image: `${process.env.PUBLIC_URL}/Assets/image-cake-desktop.png` },
+    { id: 4, title: 'Crème Brûlée', price: 14.99, image: `${process.env.PUBLIC_URL}/Assets/image-creme-brulee-desktop.png` },
+    { id: 5, title: 'Macaron', price: 9.99, image: `${process.env.PUBLIC_URL}/Assets/image-macaron-desktop.png` },
+    { id: 6, title: 'Meringue', price: 7.99, image: `${process.env.PUBLIC_URL}/Assets/image-meringue-desktop.png` },
+    { id: 7, title: 'Panna Cotta', price: 13.99, image: `${process.env.PUBLIC_URL}/Assets/image-panna-cotta-desktop.png` },
+    { id: 8, title: 'Tiramisu', price: 14.99, image: `${process.env.PUBLIC_URL}/Assets/image-tiramisu-desktop.png` },
+    { id: 9, title: 'Waffle', price: 11.99, image: `${process.env.PUBLIC_URL}/Assets/image-waffle-desktop.png` }
   ];
-
   return (
     <div className="App">
       <Header />

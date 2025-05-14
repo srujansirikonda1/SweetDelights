@@ -27,7 +27,7 @@ function Header() {
           <ul>
             <li><Link to="/"><FontAwesomeIcon icon={faHome} /> Home</Link></li>
             <li><Link to="/products"><FontAwesomeIcon icon={faBox} /> Products</Link></li>
-            <li><Link to="/cart"><FontAwesomeIcon icon={faShoppingCart} /> Cart</Link></li>
+            <li><Link to="/ProductGrid"><FontAwesomeIcon icon={faShoppingCart} /> Cart</Link></li>
           </ul>
         </nav>
       </div>

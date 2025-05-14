@@ -4,13 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { HashRouter } from 'react-router-dom';
+const isProd = process.env.NODE_ENV === "production";
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <HashRouter basename={process.env.PUBLIC_URL}>
-      <App />
-    </HashRouter>
+<HashRouter basename={isProd ? "/SweetDelights" : "/"}>
+  <App />
+</HashRouter>
   </React.StrictMode>
 );
 
