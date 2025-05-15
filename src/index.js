@@ -10,7 +10,7 @@ const isProd = process.env.NODE_ENV === "production";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-<HashRouter basename={isProd ? "/SweetDelights" : "/"}>
+<HashRouter>
   <App />
 </HashRouter>
   </React.StrictMode>
