@@ -3,9 +3,13 @@ import './HomePage.css';
 function HomePage() {
   return (
     <div className="home-page">
-      <h2>"Welcome to Sweet Delights, Your Dessert Paradise"</h2>
-      <p>Indulge in a world of exquisite desserts crafted to delight your senses. From classic confections to innovative sweet treats, our selection is curated to satisfy every craving with the finest ingredients and loving craftsmanship.</p>
-    </div>
+    <h2>Welcome to TrendBazaar, Your One-Stop Shop for Everything!</h2>
+    <p>
+      Discover a wide range of quality products—from stylish apparel and electronics to unique accessories and more.  
+      We bring you the best deals and top brands all in one place to satisfy your shopping cravings.
+    </p>
+  </div>
+  
   );
 }
 

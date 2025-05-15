@@ -6,7 +6,7 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="footer-content">
-        <p>&copy; {year} Sweet Delights. All rights reserved.</p>
+        <p>&copy; {year} TrendBazaar. All rights reserved.</p>
       </div>
     </footer>
   );
