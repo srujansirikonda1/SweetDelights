@@ -13,7 +13,12 @@ function Header({ cartCount, onCartClick }) {
   return (
     <header className="header">
       <div className="header-container">
-        <div className="brand">
+        <div className="brand" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <img
+            src={`${process.env.PUBLIC_URL}/Assets/brandlogo.png`} 
+            alt="TrendBazaar Logo"
+            style={{ width: '40px', height: '40px', borderRadius: '50%' }}
+          />
           <h1>
             <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}>
               TrendBazaar
@@ -52,12 +57,12 @@ function Header({ cartCount, onCartClick }) {
                   <span
                     style={{
                       position: 'absolute',
-                      top: '-5px',
-                      right: '-10px',
-                      backgroundColor: 'hsl(159, 69%, 38%)',
+                      top: '-8px',
+                      right: '-8px',
+                      backgroundColor: 'red',
                       color: 'white',
                       borderRadius: '50%',
-                      padding: '2px 6px',
+                      padding: '2px 8px',
                       fontSize: '0.75rem',
                       fontWeight: 'bold',
                     }}

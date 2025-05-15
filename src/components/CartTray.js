@@ -1,8 +1,9 @@
+// CartTray.js
 import React from 'react';
 
 function CartTray({ isOpen, cartItems, onClose, incrementQuantity, decrementQuantity }) {
   return (
-    < div className={`cart-tray ${isOpen ? 'open' : ''}`}>
+    <div className={`cart-tray ${isOpen ? 'open' : ''}`}>
       {isOpen && (
         <div
           onClick={onClose}

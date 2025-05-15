@@ -28,11 +28,28 @@ main {
 }
 
 
+
+/* App.css */
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   background-color: hsl(12, 20%, 44%);
   color: hsl(20, 50%, 98%);
   padding: 0.5rem;
-  position: relative;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+main {
+  margin-top: 60px;  
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: hsl(13, 31%, 94%);
+  border-radius: 8px;
 }
 
 .header-container {

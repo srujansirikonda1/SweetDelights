@@ -1,12 +1,18 @@
-import React from 'react';
+// App.js
+import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import ProductsPage from './pages/ProductsPage';
+import CartTray from './components/CartTray'; // Ensure correct import
 import './App.css';
 
 function App() {
+  const [cartOpen, setCartOpen] = useState(false);
+  // App.js example setup
+
+
   const products = [
     { id: 1, title: 'Baklava', price: 7.99, image: `${process.env.PUBLIC_URL}/Assets/image-baklava-desktop.png` },
     { id: 2, title: 'Brownie', price: 8.99, image: `${process.env.PUBLIC_URL}/Assets/image-brownie-desktop.png` },
@@ -18,9 +24,10 @@ function App() {
     { id: 8, title: 'Tiramisu', price: 14.99, image: `${process.env.PUBLIC_URL}/Assets/image-tiramisu-desktop.png` },
     { id: 9, title: 'Waffle', price: 11.99, image: `${process.env.PUBLIC_URL}/Assets/image-waffle-desktop.png` }
   ];
+
   return (
     <div className="App">
-      <Header />
+      <Header onCartClick={() => setCartOpen(!cartOpen)} />
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -28,6 +35,14 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      
+      <CartTray
+        isOpen={cartOpen}
+        cartItems={{}} // Pass your cart items here
+        onClose={() => setCartOpen(false)}
+        incrementQuantity={() => {}} // Implement this based on your state
+        decrementQuantity={() => {}} // Implement this based on your state
+      />
     </div>
   );
 }
