@@ -1,25 +1,22 @@
 import React from 'react';
 
-function ProductCard({ product, cartItem, addToCart, incrementQuantity, decrementQuantity }) {
+function ProductCard({ product, quantity, addToCart, incrementQuantity, decrementQuantity }) {
   return (
     <div className="product-card">
-      <img src={product.image} alt={product.title} style={{ maxHeight: '180px', objectFit: 'contain' }} />
-      <h3>{product.title}</h3>
+      <img src={product.image} alt={product.title} />
+      <h3 title={product.title}>{product.title.length > 40 ? product.title.slice(0, 40) + '...' : product.title}</h3>
       <p className="price">${product.price.toFixed(2)}</p>
+      <p>Rating: {product.rating.rate} ({product.rating.count} reviews)</p>
 
-      {!cartItem ? (
-        <button onClick={() => addToCart(product)} className="add-to-cart-btn">
+      {quantity === 0 ? (
+        <button className="add-to-cart-btn" onClick={() => addToCart(product)}>
           Add to Cart
         </button>
       ) : (
-        <div className="quantity-control" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <button onClick={() => decrementQuantity(product.id)} className="add-to-cart-btn" style={{ width: '30px' }}>
-            -
-          </button>
-          <span>{cartItem.quantity}</span>
-          <button onClick={() => incrementQuantity(product.id)} className="add-to-cart-btn" style={{ width: '30px' }}>
-            +
-          </button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <button onClick={() => decrementQuantity(product.id)}>-</button>
+          <span>{quantity}</span>
+          <button onClick={() => incrementQuantity(product.id)}>+</button>
         </div>
       )}
     </div>

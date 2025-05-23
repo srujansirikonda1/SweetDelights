@@ -197,3 +197,69 @@ main {
     grid-template-columns: 1fr; 
   }
 }
+
+form label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: hsl(14, 65%, 9%);
+}
+
+form input, form textarea, form select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid hsl(14, 25%, 72%);
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px; /* increase horizontal padding */
+}
+
+/* Brand stays on left */
+.brand {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+/* Push everything except brand to the right */
+.right-side {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 60px; /* bigger gap between nav and checkout-cart groups */
+}
+
+/* Group for Home, Products, Cart */
+.nav ul {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  gap: 35px; /* more space between nav items */
+  margin: 0;
+  padding: 0;
+}
+
+.nav a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Checkout and Cart group */
+.checkout-cart {
+  display: flex;
+  align-items: center;
+  gap: 25px; /* more space between Checkout and Cart */
+}

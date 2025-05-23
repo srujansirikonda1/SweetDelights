@@ -1,82 +1,99 @@
-// CartTray.js
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function CartTray({ isOpen, cartItems, onClose, incrementQuantity, decrementQuantity }) {
-  return (
-    <div className={`cart-tray ${isOpen ? 'open' : ''}`}>
-      {isOpen && (
-        <div
-          onClick={onClose}
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            height: '100vh',
-            width: '100vw',
-            backgroundColor: 'rgba(0,0,0,0.4)',
-            zIndex: 999,
-          }}
-        />
-      )}
+  const navigate = useNavigate();
 
-      <aside
+  if (!isOpen) return null;
+
+  const cartArray = Object.values(cartItems);
+  const totalPrice = cartArray.reduce(
+    (total, item) => total + item.product.price * item.quantity,
+    0
+  );
+
+  const handleProceedToCheckout = () => {
+    onClose();                // close cart tray
+    navigate('/checkout');   // go to checkout page
+  };
+
+  return (
+    <div
+      className="cart-tray-overlay"
+      style={{
+        position: 'fixed',
+        top: 0, left: 0, bottom: 0, right: 0,
+        backgroundColor: 'rgba(0,0,0,0.4)',
+        zIndex: 1100,
+        display: 'flex',
+        justifyContent: 'flex-end',
+      }}
+      onClick={onClose}
+    >
+      <div
+        className="cart-tray"
         style={{
-          position: 'fixed',
-          top: 0,
-          right: isOpen ? 0 : '-350px',
-          height: '100vh',
           width: '350px',
           backgroundColor: 'white',
-          boxShadow: '-3px 0 10px rgba(0,0,0,0.2)',
-          padding: '20px',
-          transition: 'right 0.3s ease',
-          zIndex: 1000,
-          display: 'flex',
-          flexDirection: 'column',
+          height: '100%',
+          padding: '1rem',
+          overflowY: 'auto',
+          boxShadow: '-2px 0 8px rgba(0,0,0,0.1)',
         }}
+        onClick={e => e.stopPropagation()}
       >
+        <h2>Your Cart</h2>
+        {cartArray.length === 0 ? (
+          <p>Your cart is empty.</p>
+        ) : (
+          <>
+            <ul style={{ listStyle: 'none', paddingLeft: 0 }}>
+              {cartArray.map(({ product, quantity }) => (
+                <li key={product.id} style={{ marginBottom: '1rem' }}>
+                  <strong>{product.title}</strong>
+                  <p>${product.price.toFixed(2)} x {quantity}</p>
+                  <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                    <button onClick={() => decrementQuantity(product.id)}>-</button>
+                    <span>{quantity}</span>
+                    <button onClick={() => incrementQuantity(product.id)}>+</button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <h3>Total: ${totalPrice.toFixed(2)}</h3>
+            <button
+              onClick={handleProceedToCheckout}
+              style={{
+                marginTop: '1rem',
+                backgroundColor: '#28a745',
+                color: 'white',
+                border: 'none',
+                padding: '10px 15px',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                width: '100%',
+              }}
+            >
+              Proceed to Checkout
+            </button>
+          </>
+        )}
         <button
           onClick={onClose}
           style={{
-            alignSelf: 'flex-end',
-            background: 'none',
+            marginTop: '1rem',
+            backgroundColor: 'hsl(12, 20%, 44%)',
+            color: 'white',
             border: 'none',
-            fontSize: '1.5rem',
+            padding: '10px 15px',
+            borderRadius: '4px',
             cursor: 'pointer',
+            width: '100%',
           }}
-          aria-label="Close cart"
         >
-          &times;
+          Close Cart
         </button>
-
-        <h2>Your Cart</h2>
-        {Object.keys(cartItems).length === 0 ? (
-          <p>Your cart is empty.</p>
-        ) : (
-          <ul style={{ listStyle: 'none', padding: 0, flexGrow: 1, overflowY: 'auto' }}>
-            {Object.values(cartItems).map(({ product, quantity }) => (
-              <li key={product.id} style={{ marginBottom: '15px', borderBottom: '1px solid #ccc', paddingBottom: '10px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                  <img
-                    src={product.image}
-                    alt={product.title}
-                    style={{ width: '60px', height: '60px', objectFit: 'contain' }}
-                  />
-                  <div style={{ flex: 1 }}>
-                    <h4 style={{ margin: '0 0 5px 0' }}>{product.title}</h4>
-                    <p style={{ margin: 0 }}>${product.price.toFixed(2)} x {quantity} = ${(product.price * quantity).toFixed(2)}</p>
-                  </div>
-                </div>
-                <div style={{ marginTop: '8px', display: 'flex', gap: '10px' }}>
-                  <button onClick={() => decrementQuantity(product.id)} className="add-to-cart-btn" style={{ width: '30px' }}>-</button>
-                  <span style={{ alignSelf: 'center' }}>{quantity}</span>
-                  <button onClick={() => incrementQuantity(product.id)} className="add-to-cart-btn" style={{ width: '30px' }}>+</button>
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
-      </aside>
+      </div>
     </div>
   );
 }
